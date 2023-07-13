@@ -2,12 +2,24 @@ import React, { Fragment } from "react";
 import Slider from "@mui/material/Slider";
 import { Stack, Typography } from "@mui/material";
 
-const SliderComponent = ({ defaultValue, min, max, step, onchange, value }) => {
+const SliderComponent = ({
+  defaultValue,
+  min,
+  max,
+  step,
+  onchange,
+  value,
+  label,
+  unit,
+  amount,
+}) => {
   return (
-    <Fragment>
+    <Stack my={1.4}>
       <Stack gap={1}>
-        <Typography variant="subtitle2">Home Value</Typography>
-        <Typography variant="h5">$3000</Typography>
+        <Typography variant="subtitle2">{label}</Typography>
+        <Typography variant="h5">
+          {unit} {amount}
+        </Typography>
       </Stack>
       <Slider
         defaultValue={defaultValue}
@@ -20,9 +32,17 @@ const SliderComponent = ({ defaultValue, min, max, step, onchange, value }) => {
         onChange={onchange}
         value={value}
       />
-      <Typography color="text.secondary">1000</Typography>
-      <Typography color="text.secondary">10000</Typography>
-    </Fragment>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="caption" color="text.secondary">
+          {unit}
+          {min}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          {unit}
+          {max}
+        </Typography>
+      </Stack>
+    </Stack>
   );
 };
 
